@@ -7,22 +7,10 @@ config_h_file = 'config.h'
 config_h_in_file = config_h_file + '.in'
 config_dict = {'@prefix@': '"/bin"'}
 
-if not os.path.exists(config_h_file):
-    print "log: %s missing (1)" % config_h_file
-    if not os.path.exists(config_h_in_file):
-        print "error: %s missing" % config_h_in_file
-    else:
-        print "log: generating using %s" % config_h_in_file
-        env.Substfile(config_h_in_file, SUBST_DICT = config_dict)
-        if not os.path.exists(config_h_file):
-            print "log: %s missing (3)" % config_h_file
+env.Substfile(config_h_in_file, SUBST_DICT = config_dict)
 
 program_sources = [ 
-    config_h_file,
-    program_name + ".c"
+    program_name + ".c",
 ]
 
 env.Program(program_name, program_sources)
-
-if not os.path.exists(config_h_file):
-    print "log: %s missing (2)" % config_h_file
