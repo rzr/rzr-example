@@ -2,6 +2,6 @@
 
 #working
 #SConscript('src/SConscript')
-SConscript('src/SConscript', variant_dir='build/src')
+SConscript('src/SConscript', variant_dir='build/src', duplicate=0)
 
 

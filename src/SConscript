@@ -1,6 +1,6 @@
 # -*- mode: python; python-indent-offset: 4; indent-tabs-mode: nil -*-
 import os
-env = Environment(tools = ['default', 'textfile'])
+env = Environment(tools = ['default', 'textfile'],CPPPATH=[Dir('.')])
 
 program_name = "main"
 config_h_file = 'config.h'
