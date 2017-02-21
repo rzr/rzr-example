@@ -1,0 +1,7 @@
+*~
+a.out
+main
+*.o
+debian/*.debhelper.log
+core
+.sconsign.dblite

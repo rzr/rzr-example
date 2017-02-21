@@ -1,0 +1,4 @@
+#ifndef config_h_
+#define config_h_ 1
+#define PREFIX @prefix@
+#endif
