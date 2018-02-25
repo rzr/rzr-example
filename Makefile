@@ -2,7 +2,7 @@ NAME?="Let's use FreeCAD"
 target=freecad
 all: ${target}.html
 
-%.html: %.org #Makefile
+%.html: %.org Makefile
 	NAME=${NAME} emacs --batch\
  -u ${USER} \
   --eval '(load user-init-file)' \
@@ -16,14 +16,3 @@ help:
 
 clean:
 	rm -rf *~ tmp
-
-index.html: ${target}.lst ${target}.html
-	mkdir -p http
-	cat ${target}.lst | while read url ; do \
-  cd ${CURDIR}/http && wget -p "$${url}" ; \
-  done
-	sed -e "s|http://cdn.jsdelivr.net/|./http//cdn.jsdelivr.net/|g" < ${target}.html > $@
-
-%.lst: %.html
-	grep -o "http://cdn.jsdelivr.net/[^'\"]*" $< > "$@"
-
