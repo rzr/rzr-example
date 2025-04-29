@@ -17,4 +17,8 @@ jobs:
       - uses: actions/checkout@v4.1.1
         with:
           fetch-depth: 0
-      - run: git describe --tags
+      - id: describe
+        name: Describe HEAD
+        run: >-
+          echo "describe=$(git describe --tags --always || echo 0)"
+          | tee $GITHUB_OUTPUT
