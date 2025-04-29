@@ -8,10 +8,11 @@ on:  # yamllint disable-line rule:truthy
     workflows: ["build"]
     types:
       - completed
-run-name: "${{ github.event.workflow_run.head_branch }} ${{ github.event.workflow_run.head_commit.id }}"
+run-name: "test: ${{ github.event.workflow_run.head_branch }}#${{ github.event.workflow_run.head_commit.id }}"
 jobs:
   test:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4.1.1
         with:
